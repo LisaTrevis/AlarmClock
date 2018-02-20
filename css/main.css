@@ -24,17 +24,25 @@ body {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 40px;
 }
 
 select,
 button {
   font-size: 2.6em;
   margin-right: 10px;
+  border-radius: 10px;
+}
+
+.btn {
+  color: black;
 }
 
 #message {
   flex: 0 1 100%;
   text-align: center;
+  margin-top: 30px;
+  color: black;
 }
 
 @media(min-width: 750px) {
