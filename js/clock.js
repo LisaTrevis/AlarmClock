@@ -6,7 +6,7 @@ function checkTime(i) {
 	return i;
 }
 
-// The parens in front of and at the end of this function invoke/call the function automatically without having to invoke/call it below or create an event listener, and is called an "IIFE" (Immediately Invoked Function Expressions). This also creates security so that duplicate variable files aren't overwritten and variables within a function cannot be accessed by outside functions/files. This is called namespacing.
+// The parens in front of and at the end of this function invoke/call the function automatically without having to invoke/call it below or create an event listener, and is called an "IIFE" (Immediately Invoked Function Expression). This also creates security so that duplicate variable files aren't overwritten and variables within a function cannot be accessed by outside functions/files. This is called namespacing.
 
 
 (function startTime() {
@@ -18,10 +18,12 @@ function checkTime(i) {
 
 	// This piece of code makes this variable available globally by creating a property on the global object (window) and then setting the value of that new property to the value returned by the getHours() function. As clock.js is the first of the custom scripts on the index.html file, this value can now be used by subsuqent files (i.e. alarm.js).
 
-    // Specifically, we want to know what the raw hours value is, because computers use military time (as does the getHours() method), and we are using a 12-hour clock for user input values. Our alarm values are ALSO going to be in 12 hour format. We want both the adjusted and unadjusted hours, and which we use will depend on the situation.
 	window.rawHours = hour;
+    
+    // Specifically, the raw hours value is needed because computers use military time (as does the getHours() method), and I'm using a 12-hour clock for user input values. The alarm values are ALSO going to be in 12 hour format. Both the adjusted and unadjusted hours are needed, and will be used depending on the situation.
+
 	
-	// Use if/else statement to convert getDate() method results (which returns values in military time) to 12 hour time.
+	// Using an if/else statement to convert getDate() method results (which returns values in military time) to 12 hour time.
 	if (hour > 12) {
 		hour = hour - 12;
 	} else if (hour === 0) {
@@ -37,7 +39,7 @@ function checkTime(i) {
 	window.minutes = minute;
 
 	// Sets the value of the innerHTML for the id="time" element using the hour, minute & second variable values plus a few colons as strings.
-	document.getElementById("time").innerHTML = hour + ":" + minute + ":" + second;
+	document.getElementById("time").textContent = hour + ":" + minute + ":" + second;
 	
 	// Makes the function update every second in real time
 	setTimeout(startTime, 1000);
